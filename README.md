@@ -5,6 +5,9 @@ ASSIGNMENT 1:
 
 Please write a simple CLI application in the language of your choice that does the following: Print the numbers from 1 to 10 in random order to the terminal. Please provide a README, that explains detailed how to run the program on MacOS and Linux.
 
+Solution:
+================
+
 (I could test on linux environment as I don’t have setup of Mac OS here)
 How to work on Linux:
 1. Create a python file :
