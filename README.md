@@ -104,7 +104,7 @@ How to run script gcmonitor.sh:
 4) Change the permission to executable 
   chmod 755 gcmonitor.sh
 5) Execute the script
-##################################################################################################
+##############################################################################################
 
 Challenges of monitoring:
 ============================
