@@ -95,8 +95,8 @@ Backend:
 4) requests whose responses yielded an error
 5) number of requests unassigned in queue
 6) time spent in queue (in ms) for the last 1,024 requests
-7) times a request was redispatched to a different backend
-8) times a connection was retried
+7) No of times a request was redispatched to a different backend
+8) No of times a connection was retried
 
 How to monitor metrics?
 ================================
