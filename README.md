@@ -68,6 +68,30 @@ Memory :
 
 3) SSL-Offloading Proxy Server Process Aliveness (With Nagios/Zabbix etc )
 
+HaProxy:(Frontend/backend)
+===========
+Frontend
+---------
+1) requests per second
+2) sessions created per second
+3) sessions used
+4) request errors
+5) denied requests (ACL)
+6) client errors
+7) server errors
+8) bytes received
+9) bytes sent
+
+Backend:
+==========
+1) backend response time (in ms) for the last 1024 requests
+2) requests that encountered an error attempting to connect to a backend server
+3) responses denied (ACL)
+4) requests whose responses yielded an error
+5) number of requests unassigned in queue
+6) time spent in queue (in ms) for the last 1,024 requests
+7) times a request was redispatched to a different backend
+8) times a connection was retried
 
 How to monitor metrics?
 ================================
