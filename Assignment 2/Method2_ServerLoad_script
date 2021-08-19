@@ -8,7 +8,7 @@
 # clear the screen
 clear
 
-unset gcreset os archigcture kernelrelease internalip externalip nameserver loadaverage
+unset gcreset os architecture kernelrelease internalip externalip nameserver loadaverage
 
 while getopts iv name
 do
