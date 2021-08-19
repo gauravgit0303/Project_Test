@@ -126,7 +126,7 @@ Few scenarios are mentioned below which can be monitored:
 Method 2: 
 ===========
 
-I created a custom shell script to monitor each metrics and send warning when metric value goes over threshold value,then schedule the script in cron as per our desired frequency:
+I created a custom shell script to monitor each metrics and send warning when metric value goes over threshold value,then schedule the script in crontab as per our requirement:
 
 How to run script gcmonitor.sh:
 1) Create a file 
@@ -135,6 +135,8 @@ How to run script gcmonitor.sh:
 4) Change the permission to executable 
   chmod 755 gcmonitor.sh
 5) Execute the script
+
+
 ##############################################################################################
 
 Challenges of monitoring:
@@ -147,9 +149,9 @@ Challenges of monitoring:
   
 3) To try and Set proper trigger warning value to minimize false alarm.
 
-4) Internet Facing Firewall Monitoring : Catch Security Threats.
+4) Internet Facing Firewall Monitoring : Catch Security Threats ,DDoS attacks.
 
-5) Monitoring of Monitoring and HA of monitoring itself : Its always challenge.
+5) Monitoring of Monitoring and HA of monitoring itself : Its always a challenge.
 
-6) In some cases, the application is not compatible at all with SSL offloading. Challenge in differentiate of those clients?
+6) The compatible metrics for the client:-Some applications might not be compatible at all with SSL offloading. Challenge is to differentiate those clients?
 
