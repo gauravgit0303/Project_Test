@@ -9,12 +9,13 @@ Solution:
 ================
 
 (I could test on linux environment as I don’t have setup of Mac OS here)
-How to work on Linux:
+
+How to execute program on Linux:
 1. Create a python file :
 2. $ vi randomnumber.py
 3. write the code in editor and save it
 4. run the python file and get the result on the terminal
-$ python randomnumber.py
+    $ python randomnumber.py
 
 **********************************************************************************************************************************************************************************
 ASSIGNMENT 2:
@@ -37,15 +38,16 @@ Metrics to monitor:
 Sever running state: 
 ====================
 1) Uptime of server status
+
 2) Load on the server
 
 CPU:
 =======
 1) CPU load
 
-2) CPU temperature(SSL-Offloading is CPU sensitive process)
+2) CPU temperature(SSL-Offloading is CPU sensitive process).
 
-3) Increase in file descriptor (Slower responses and higher wait time will cause high FD’s on server)
+3) Increase in file descriptor (Slower responses and higher wait time will cause high FD’s on server).
 
 Network:
 =========
@@ -63,11 +65,11 @@ Application Monitoring:
 =======================
 1) SSL Certificate Validation status.
 
-2) Http request/response status
+2) Http request/response status.
 
 Memory :
 ========
-1) Memory Free ( (Free memory on the server)
+1) Free memory on the server.
 
 2) IO read/write
 
@@ -96,16 +98,15 @@ Backend:
 5) number of requests unassigned in queue
 6) time spent in queue (in ms) for the last 1,024 requests
 7) No of times a request was redispatched to a different backend
-8) No of times a connection was retried
+8) No of times a connection was retried.
 
 How to monitor metrics?
 ================================
 
 Method 1 :
 ===========
-We can use either nagios or zabbix etc monitoring tools
-
-Here we can use nagios/zabbix for monitoring where we can monitor below metrics:
+We can use either nagios or zabbix etc monitoring tools to monitor the below mentioned metrics.
+Few scenarios are mentioned below which can be monitored:
 
 1) CPU load (SSL-Offloading is CPU sensitive process)
 
@@ -125,7 +126,8 @@ Here we can use nagios/zabbix for monitoring where we can monitor below metrics:
 Method 2: 
 ===========
 
-I created a custom shell script to monitor each metric and send warning when metric value over expected,then add a cron job in the server to run.
+I created a custom shell script to monitor each metrics and send warning when metric value goes over threshold value,then schedule the script in cron as per our desired frequency:
+
 How to run script gcmonitor.sh:
 1) Create a file 
 2) vi gcmonitor.sh
