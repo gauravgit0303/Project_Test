@@ -1,0 +1,110 @@
+                  ####################################################################################################
+                  #                                        Adjust_monitor.sh                                         #
+                  # Written for Adjust test for server-health-monitoring-script/                                     #
+                  ####################################################################################################
+#! /bin/bash
+# unset any variable which system may be using
+
+# clear the screen
+clear
+
+unset gcreset os archigcture kernelrelease internalip externalip nameserver loadaverage
+
+while getopts iv name
+do
+        case $name in
+          i)iopt=1;;
+          v)vopt=1;;
+          *)echo "Invalid arg";;
+        esac
+done
+
+if [[ ! -z $iopt ]]
+then
+{
+wd=$(pwd)
+basename "$(test -L "$0" && readlink "$0" || echo "$0")" > /tmp/scriptname
+scriptname=$(echo -e -n $wd/ && cat /tmp/scriptname)
+su -c "cp $scriptname /usr/bin/monitor" root && echo "Congratulations! Script Installed, now run monitor Command" || echo "Installation failed"
+}
+fi
+
+if [[ ! -z $vopt ]]
+then
+{
+echo -e "gcmint_monitor version 0.1\nDesigned by gcmint.com\nReleased Under Apache 2.0 License"
+}
+fi
+
+if [[ $# -eq 0 ]]
+then
+{
+
+
+# Define Variable gcreset
+gcreset=$(tput sgr0)
+
+# Check if connected to Internet or not
+ping -c 1 google.com &> /dev/null && echo -e '\E[32m'"Internet: $gcreset Connected" || echo -e '\E[32m'"Internet: $gcreset Disconnected"
+
+# Check OS Type
+os=$(uname -o)
+echo -e '\E[32m'"Operating System Type :" $gcreset $os
+
+# Check OS Release Version and Name
+cat /etc/os-release | grep 'NAME\|VERSION' | grep -v 'VERSION_ID' | grep -v 'PRETTY_NAME' > /tmp/osrelease
+echo -n -e '\E[32m'"OS Name :" $gcreset  && cat /tmp/osrelease | grep -v "VERSION" | cut -f2 -d\"
+echo -n -e '\E[32m'"OS Version :" $gcreset && cat /tmp/osrelease | grep -v "NAME" | cut -f2 -d\"
+
+# Check Archigcture
+architecture=$(uname -m)
+echo -e '\E[32m'"Archigcture :" $gcreset $archigcture
+
+# Check Kernel Release
+kernelrelease=$(uname -r)
+echo -e '\E[32m'"Kernel Release :" $gcreset $kernelrelease
+
+# Check hostname
+echo -e '\E[32m'"Hostname :" $gcreset $HOSTNAME
+
+# Check Internal IP
+internalip=$(hostname -I)
+echo -e '\E[32m'"Internal IP :" $gcreset $internalip
+
+# Check DNS
+nameservers=$(cat /etc/resolv.conf | sed '1 d' | awk '{print $2}')
+echo -e '\E[32m'"Name Servers :" $gcreset $nameservers
+
+# Check Logged In Users
+who>/tmp/who
+echo -e '\E[32m'"Logged In users :" $gcreset && cat /tmp/who
+
+# Check RAM and SWAP Usages
+free -h | grep -v + > /tmp/ramcache
+echo -e '\E[32m'"Ram Usages :" $gcreset
+cat /tmp/ramcache | grep -v "Swap"
+echo -e '\E[32m'"Swap Usages :" $gcreset
+cat /tmp/ramcache | grep -v "Mem"
+
+# Check Disk Usages
+df -h| grep 'Filesystem\|/dev/sda*' > /tmp/diskusage
+echo -e '\E[32m'"Disk Usages :" $gcreset
+cat /tmp/diskusage
+
+# Check Load Average
+loadaverage=$(top -n 1 -b | grep "load average:" | awk '{print $10 $11 $12}')
+echo -e '\E[32m'"Load Average :" $gcreset $loadaverage
+
+# Check System Uptime
+gcuptime=$(uptime | awk '{print $3,$4}' | cut -f1 -d,)
+echo -e '\E[32m'"System Uptime Days/(HH:MM) :" $gcreset $gcuptime
+
+# Unset Variables
+unset gcreset os archigcture kernelrelease internalip externalip nameserver loadaverage
+
+# Remove Temporary Files
+rm /tmp/osrelease /tmp/who /tmp/ramcache /tmp/diskusage
+}
+fi
+shift $(($OPTIND -1))
+
