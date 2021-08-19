@@ -33,6 +33,8 @@ Metrics to monitor:
 
 Sever running state: 
 ====================
+1) Uptime of server status
+2) Load on the server
 
 CPU:
 =======
