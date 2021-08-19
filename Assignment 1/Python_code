@@ -1,0 +1,4 @@
+import random
+numbers = list(range(10))
+random.shuffle(numbers)
+print(numbers)
